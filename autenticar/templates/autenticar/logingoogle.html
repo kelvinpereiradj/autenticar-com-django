@@ -1,0 +1,50 @@
+
+{% load static %} 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>sem título</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+
+<style>
+		
+    html{
+        background-color:rgb(195, 238, 187);
+    }
+    input{
+        font-size: 35px;
+    }
+    label{
+        font-size: 35px;
+    }
+    .formulario{
+        margin: 10% 0% 0% 10%;
+        font-size: 25px;
+    } 
+</style>
+
+
+
+<body>
+
+    <div id="g_id_onload"
+    data-client_id="996621484767-dn0bjsvf8p6to21rfjjik382tilc8m1j.apps.googleusercontent.com"
+    data-context="signin"
+    data-login_uri="http://localhost">
+</div>
+    <div class='formulario'>
+        {% csrf_token %}
+        {{ user.username }}
+    </div>
+    <hr/> 
+    <div class='formulario'>
+        {{dados|safe}}          
+    </div>
+    <hr/> 
+</body>
+
+</html>

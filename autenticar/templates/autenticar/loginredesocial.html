@@ -1,0 +1,87 @@
+
+{% load socialaccount %}
+{% load account %}
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>sem título</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+
+<style>
+		
+    html{
+        background-color:rgb(195, 238, 187);
+    }
+    input{
+        font-size: 35px;
+    }
+    label{
+        font-size: 35px;
+    }
+    .formulario{
+        margin: 10% 0% 0% 10%;
+    } 
+</style>
+
+
+
+
+<body>
+    <div class='formulario'> 
+        <h1><a href="/autenticar/">autenticar</a></h1>
+    </div>
+    <hr/>
+
+    <div class='formulario'>
+        {% csrf_token %}    
+        {% user_display user %}            
+    </div>
+    <hr/> 
+
+
+
+    <div class='formulario'>             
+        <h1>Conecte-se com o Facebook</h1>
+        {% if user.is_authenticated %}
+          <p>Bem-vindo, você está logado com {{ user.username }}</p>
+        {% else %}
+          <a href="{% provider_login_url 'facebook' %}">Login com Facebook</a>
+        {% endif %}    
+    </div>
+    <hr/> 
+
+    <div class='formulario'>             
+        <h1>Conecte-se com o Google </h1>
+        {% if user.is_authenticated %}
+          <p>Bem-vindo, você está logado com {{ user.username }}</p>
+        {% else %}
+          <a href="{% provider_login_url 'google' %}">Login com Google</a>
+        {% endif %}
+    </div>
+    <hr/>
+
+    <div class='formulario'>             
+        <h1>Conecte-se com o Google </h1>
+        {% if user.is_authenticated %}
+          <p>Bem-vindo, você está logado com {{ user.username }}</p>
+        {% else %}
+            {% csrf_token %} 
+
+          <a href="/autenticar/loginredesocialredirecionar">Login com Google</a>
+        {% endif %}https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=241540098180-7q6jnv556kq14imtlo2hriflfr83ae4h.apps.googleusercontent.com&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Faccounts%2Fgoogle%2Flogin%2Fcallback%2F&scope=profile%20email&response_type=code&flowName=GeneralOAuthFlow
+                   https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=241540098180-7q6jnv556kq14imtlo2hriflfr83ae4h.apps.googleusercontent.com&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Faccounts%2Fgoogle%2Flogin%2Fcallback%2F&scope=profile%20email&response_type=code&state={% csrf_token %}F0u4U84O9fGE&flowName=GeneralOAuthFlow
+    </div>
+    <hr/>
+
+
+</body>
+
+</html>
